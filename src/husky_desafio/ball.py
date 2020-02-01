@@ -69,16 +69,11 @@ class Camera:
     # setup timer and font
     timer = int(time.time() - self.start)
     font = cv2.FONT_HERSHEY_SIMPLEX
-
     # convert img to cv2
     cv2_frame = self.bridge.imgmsg_to_cv2(data, "bgr8")
-
-    ### COLOR DETECTION ###
     # define range of yellow color
     yellowLower = (20, 100, 100)
     yellowUpper = (32, 255, 255)
-
-    # hsv color-space convert
     hsv = cv2.cvtColor(cv2_frame, cv2.COLOR_BGR2HSV)
 
     # Threshold the HSV image to get only blue colors
@@ -114,18 +109,13 @@ class Camera:
           os.system("rosnode kill /explore")
           self.flag_killed = True
         # controller actions
-        linear_vel =  0 #self.linear_vel_control.calculate(1, 174, radius[0])
+        linear_vel =  0
         angular_vel = self.angular_vel_control.calculate(1, 640, centers[0][0])
-        #self.cmd_vel_pub(linear_vel, angular_vel, cv2_frame) 
-        # print info on terminal
         if not self.flag_finished:
           print('CONTROL INFO :')
           print('radius: ' + str(radius[0]))
           print('center x position: ' + str(centers[0][0]))
-          #print('linear vel: ' + str(linear_vel))                
-          #print('angular vel: ' + str(angular_vel))
           self.goal_move_base(centers[0][0], radius[0])
-          print('##################################')
           # draw a circle in sphere and put a warning message
           cv2.circle(cv2_frame, (int(centers[index][0]), int(centers[index][1])), int(radius[index]), (0, 0, 255), 5) 
           cv2.putText(cv2_frame, 'BOMB HAS BEEN DETECTED!', (20, 130), font, 2, (0, 0, 255), 5)
@@ -169,13 +159,11 @@ class Camera:
         x_move_base = distance
       else:
         x_move_base = math.sqrt(distance**2 - y_move_base**2)
-      self.msg_move_to_goal.pose.position.x = x_move_base
+      self.msg_move_to_goal.pose.position.x = x_move_base -0.5
       self.msg_move_to_goal.pose.position.y = y_move_base
       self.msg_move_to_goal.pose.orientation.w = 1
       self.msg_move_to_goal.header.frame_id = self.camera_info.header.frame_id
       if self.flag:
-        # self.cancel_explore.publish()
-        # os.system("rosnode kill /Operator")
         print('enviando goal')
         self.pub_move_to_goal.publish(self.msg_move_to_goal)
         self.flag = False
@@ -196,10 +184,7 @@ class Camera:
   def pub_move_base(self, x, y):
     if self.mission_phase == None:
       self.mission_phase = 1
-
-  #def move_base_pub(self, x, y, angle):
-    #coment
-
+      
 class Controller:
   sat_max = 0
   sat_min = 0

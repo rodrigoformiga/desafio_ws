@@ -1,10 +1,6 @@
 <?xml version="1.0"?>
 <launch>
 
-<!-- Map data-->
-  <!-- <arg name="map_file" default="$(find explore_lite)/worldexp.yaml"/>
-  <node name="map_server" pkg="map_server" type="map_server" args="$(arg map_file)" /> -->
-
   <arg name="laser_enabled" default="false"/>
   <arg name="kinect_enabled" default="false"/>
   <!-- these are the arguments you can pass this launch file, for example paused:=true -->
@@ -14,7 +10,6 @@
   <arg name="gui"           default="true"/>
   <arg name="headless"      default="false"/>
   <arg name="debug"         default="false"/>
-  <!-- <arg name="robot_model"   default="$(find learnrobotics)/model/urdf/robot.xacro"/> -->
   <env name="GAZEBO_MODEL_PATH" value="${GAZEBO_MODEL_PATH}:$(find bircimatec5_map)/model"/>
   <env name="GAZEBO_RESOURCE_PATH" value="${GAZEBO_RESOURCE_PATH}:$(find bircimatec5_map)/model"/>
   <!-- We resume the logic in empty_world.launch -->
@@ -30,41 +25,17 @@
 
 
   <node name="rviz" pkg="rviz" type="rviz" args="-d $(find husky_desafio)/launch/robot.rviz" output="screen"/>
-  <!-- <node name="jean" pkg="husky_desafio" type="ball.py"/> -->
-  <!-- <node name="controle" pkg="ros_search_obj" type="control_vision.py"/> -->
- <!-- ##########   IDITADO  ########### -->
+
   <node pkg="pointcloud_to_laserscan"
     type="pointcloud_to_laserscan_node"
     name="pointcloud_to_laserscan_node"
     args="cloud_in:=/velodyne_points" />
 
-  <!-- <node pkg="cimatec_simulation" name="opencv_camera" type="camera.py" output="screen" /> -->
-  <!-- <node pkg="cimatec_simulation" name="robot_vision" type="control_vision.py" output="screen" /> -->
-
-
-  <!-- <node pkg="explore_lite" type="explore" respawn="false" name="explore" output="screen">
-    <param name="robot_base_frame" value="base_link"/>
-    <param name="costmap_topic" value="map"/>
-    <!- <param name="costmap_updates_topic" value="map_updates"/> ->
-    <param name="visualize" value="true"/>
-    <param name="planner_frequency" value="0.33"/>
-    <param name="progress_timeout" value="10.0"/>
-    <param name="potential_scale" value="1.0"/>
-    <param name="orientation_scale" value="0.0"/>
-    <param name="gain_scale" value="1.0"/>
-    <param name="transform_tolerance" value="0.3"/>
-    <param name="min_frontier_size" value="20"/>
-  </node> -->
-
   <arg name="urdf_extras" default="$(find husky_desafio)/urdf/vlp-16.xacro"/>
+
   <include file="$(find husky_gazebo)/launch/spawn_husky.launch">
     <arg name="laser_enabled" value="$(arg laser_enabled)"/>
     <arg name="kinect_enabled" value="$(arg kinect_enabled)"/>
     <arg name="urdf_extras" value="$(arg urdf_extras)"/>
   </include>
-  <!-- - Run gmapping -->
-  <!-- <include file="$(find husky_navigation)/launch/gmapping.launch" /> -->
-  <!--- Run Move Base -->
-  <!-- <include file="$(find husky_navigation)/launch/move_base.launch" /> -->
-  <!-- <include file="$(find husky_navigation)/launch/exploration.launch" /> -->
 </launch>
