@@ -31,8 +31,8 @@ ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSI
 
   <arg name="x" default="49.0"/>
   <arg name="y" default="10.0"/>
-  <arg name="z" default="0.0"/>
-  <arg name="yaw" default="0.0"/>
+  <arg name="z" default="0.3"/>
+  <arg name="yaw" default="3.14159265359"/>
 
   <arg name="laser_enabled" default="$(optenv HUSKY_LMS1XX_ENABLED false)"/>
   <arg name="kinect_enabled" default="$(optenv HUSKY_UR5_ENABLED false)"/>
