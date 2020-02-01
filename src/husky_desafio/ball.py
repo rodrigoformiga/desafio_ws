@@ -14,8 +14,8 @@ from geometry_msgs.msg import Twist, Vector3
 from cv_bridge import CvBridge, CvBridgeError
 from move_base_msgs.msg import MoveBaseActionGoal
 from geometry_msgs.msg import PoseStamped
-from nav2d_navigator.msg import GetFirstMapActionGoal, ExploreActionGoal
 from actionlib_msgs.msg import GoalID 
+from visualization_msgs.msg import MarkerArray
 
 
 class Camera:
@@ -54,16 +54,7 @@ class Camera:
     self.msg_move_to_goal = PoseStamped()
     self.flag = True
     self.camera_info = CameraInfo()
-    self.start_map = rospy.Publisher("/GetFirstMap/goal", GetFirstMapActionGoal, queue_size=1)
-    self.start_explore = rospy.Publisher("/Explore/goal", ExploreActionGoal, queue_size = 1)
-    self.cancel_map = rospy.Publisher("/GetFirstMap/cancel", GoalID, queue_size = 1)
-    self.cancel_explore = rospy.Publisher("/Explore/cancel", GoalID, queue_size = 1)
-    time.sleep(1)
-    self.start_map.publish()
-    time.sleep(30)
-    self.cancel_map.publish()
-    time.sleep(2)
-    self.start_explore.publish()
+
 
   def callback(self, data):
     # setup timer and font
@@ -104,8 +95,6 @@ class Camera:
           vel_msg.linear.x = 0
           vel_msg.angular.z = 0
           self.velocity_publisher.publish(vel_msg)
-          self.cancel_map.publish()
-          self.cancel_explore.publish()
           os.system("rosnode kill /explore")
           self.flag_killed = True
         # controller actions

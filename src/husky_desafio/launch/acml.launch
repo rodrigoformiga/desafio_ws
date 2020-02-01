@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <launch>
 
-  <arg name="map_file" default="$(find explore_lite)/teste2.yaml"/>
+  <arg name="map_file" default="$(find explore_lite)/testedoteste.yaml"/>
   <node name="map_server" pkg="map_server" type="map_server" args="$(arg map_file)" />
 
   <include file="$(find husky_navigation)/launch/amcl.launch" />
