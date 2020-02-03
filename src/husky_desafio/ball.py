@@ -157,7 +157,7 @@ class Camera:
         self.pub_move_to_goal.publish(self.msg_move_to_goal)
         self.flag = False
         self.timer_flag = time.time()
-      if time.time() - self.timer_flag > 10:
+      if time.time() - self.timer_flag > 6:
         self.flag = True      
       print('distance to sphere: ' + str(distance))
       print('INCREMENTO X: ' + str(x_move_base))
