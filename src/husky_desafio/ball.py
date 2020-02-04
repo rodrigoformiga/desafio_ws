@@ -45,7 +45,7 @@ class Camera:
     # image publisher object
     self.image_pub = rospy.Publisher('camera/mission', Image, queue_size=10)
     # cmd_vel publisher object
-    self.velocity_publisher = rospy.Publisher('cmd_vel', Twist, queue_size=10)
+    self.velocity_publisher = rospy.Publisher('/cmd_vel', Twist, queue_size=10)
     # get camera info
     rospy.Subscriber("/diff/camera_top/camera_info", CameraInfo, self.callback_camera_info)
     # move to goal 
@@ -140,15 +140,15 @@ class Camera:
     self.velocity_publisher.publish(vel_msg)
   
   def goal_move_base(self, center_ball, radius):
-    distance = (1 * self.focalLength) / (radius * 2)
+    distance = (self.focalLength) / (radius * 2)
 
-    if (distance > 3.0):
+    if (distance > 2.5):
       y_move_base = -(center_ball - self.camera_info.width/2) / (radius*2) 
       if abs(y_move_base) < 0.006:
         x_move_base = distance
       else:
         x_move_base = math.sqrt(distance**2 - y_move_base**2)
-      self.msg_move_to_goal.pose.position.x = x_move_base -0.5
+      self.msg_move_to_goal.pose.position.x = x_move_base
       self.msg_move_to_goal.pose.position.y = y_move_base
       self.msg_move_to_goal.pose.orientation.w = 1
       self.msg_move_to_goal.header.frame_id = self.camera_info.header.frame_id
@@ -163,7 +163,7 @@ class Camera:
       print('INCREMENTO X: ' + str(x_move_base))
       print('INCREMENTO Y: ' + str(y_move_base))
     
-    if (distance <= 3.0):
+    if (distance <= 1.5):
       self.pub_cancel_move.publish()
       vel_msg = Twist()
       vel_msg.linear.x = 0
@@ -204,6 +204,16 @@ class Controller:
     # set error_prev for kd   
     self.error_prev = self.error   
     return control_output  
+
+  def goal_ajustment(self, data):
+    msg_twist = Twist()
+    while round(msg_twist.angular.z, 1) != 0 and round(msg_twist.linear.x, 1) != 0:
+      msg_twist.angular.z = self.control_pid_yaw.pid_calculate(0.5, self.camera_info.width/2, int(data.x))
+      msg_twist.linear.x = self.control_pid_x.pid_calculate(0.5, 200, int(data.z))
+      self.pub_cmd_vel.publish(msg_twist)
+    rospy.loginfo("Find the ball!")
+    rospy.loginfo(time.time() - self.time_start)
+    self.stop = True
     
     # main function
 if __name__	== '__main__':

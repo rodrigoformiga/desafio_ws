@@ -1,22 +1,22 @@
 Determining if the pthread_create exist failed with the following output:
 Change Dir: /home/azihell/desafio_ws/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_e20c5/fast"
-/usr/bin/make -f CMakeFiles/cmTC_e20c5.dir/build.make CMakeFiles/cmTC_e20c5.dir/build
+Run Build Command:"/usr/bin/make" "cmTC_4fb30/fast"
+/usr/bin/make -f CMakeFiles/cmTC_4fb30.dir/build.make CMakeFiles/cmTC_4fb30.dir/build
 make[1]: Entering directory '/home/azihell/desafio_ws/build/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_e20c5.dir/CheckSymbolExists.c.o
-/usr/bin/cc    -o CMakeFiles/cmTC_e20c5.dir/CheckSymbolExists.c.o   -c /home/azihell/desafio_ws/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c
-Linking C executable cmTC_e20c5
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_e20c5.dir/link.txt --verbose=1
-/usr/bin/cc      -rdynamic CMakeFiles/cmTC_e20c5.dir/CheckSymbolExists.c.o  -o cmTC_e20c5 
-CMakeFiles/cmTC_e20c5.dir/CheckSymbolExists.c.o: In function `main':
+Building C object CMakeFiles/cmTC_4fb30.dir/CheckSymbolExists.c.o
+/usr/bin/cc    -o CMakeFiles/cmTC_4fb30.dir/CheckSymbolExists.c.o   -c /home/azihell/desafio_ws/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c
+Linking C executable cmTC_4fb30
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_4fb30.dir/link.txt --verbose=1
+/usr/bin/cc      -rdynamic CMakeFiles/cmTC_4fb30.dir/CheckSymbolExists.c.o  -o cmTC_4fb30 
+CMakeFiles/cmTC_4fb30.dir/CheckSymbolExists.c.o: In function `main':
 CheckSymbolExists.c:(.text+0x1b): undefined reference to `pthread_create'
 collect2: error: ld returned 1 exit status
-CMakeFiles/cmTC_e20c5.dir/build.make:97: recipe for target 'cmTC_e20c5' failed
-make[1]: *** [cmTC_e20c5] Error 1
+CMakeFiles/cmTC_4fb30.dir/build.make:97: recipe for target 'cmTC_4fb30' failed
+make[1]: *** [cmTC_4fb30] Error 1
 make[1]: Leaving directory '/home/azihell/desafio_ws/build/CMakeFiles/CMakeTmp'
-Makefile:126: recipe for target 'cmTC_e20c5/fast' failed
-make: *** [cmTC_e20c5/fast] Error 2
+Makefile:126: recipe for target 'cmTC_4fb30/fast' failed
+make: *** [cmTC_4fb30/fast] Error 2
 
 File /home/azihell/desafio_ws/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
 /* */
@@ -36,20 +36,20 @@ int main(int argc, char** argv)
 Determining if the function pthread_create exists in the pthreads failed with the following output:
 Change Dir: /home/azihell/desafio_ws/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_c2c74/fast"
-/usr/bin/make -f CMakeFiles/cmTC_c2c74.dir/build.make CMakeFiles/cmTC_c2c74.dir/build
+Run Build Command:"/usr/bin/make" "cmTC_4a75b/fast"
+/usr/bin/make -f CMakeFiles/cmTC_4a75b.dir/build.make CMakeFiles/cmTC_4a75b.dir/build
 make[1]: Entering directory '/home/azihell/desafio_ws/build/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_c2c74.dir/CheckFunctionExists.c.o
-/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=pthread_create   -o CMakeFiles/cmTC_c2c74.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.10/Modules/CheckFunctionExists.c
-Linking C executable cmTC_c2c74
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_c2c74.dir/link.txt --verbose=1
-/usr/bin/cc  -DCHECK_FUNCTION_EXISTS=pthread_create    -rdynamic CMakeFiles/cmTC_c2c74.dir/CheckFunctionExists.c.o  -o cmTC_c2c74 -lpthreads 
+Building C object CMakeFiles/cmTC_4a75b.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=pthread_create   -o CMakeFiles/cmTC_4a75b.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.10/Modules/CheckFunctionExists.c
+Linking C executable cmTC_4a75b
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_4a75b.dir/link.txt --verbose=1
+/usr/bin/cc  -DCHECK_FUNCTION_EXISTS=pthread_create    -rdynamic CMakeFiles/cmTC_4a75b.dir/CheckFunctionExists.c.o  -o cmTC_4a75b -lpthreads 
 /usr/bin/ld: cannot find -lpthreads
 collect2: error: ld returned 1 exit status
-CMakeFiles/cmTC_c2c74.dir/build.make:97: recipe for target 'cmTC_c2c74' failed
-make[1]: *** [cmTC_c2c74] Error 1
+CMakeFiles/cmTC_4a75b.dir/build.make:97: recipe for target 'cmTC_4a75b' failed
+make[1]: *** [cmTC_4a75b] Error 1
 make[1]: Leaving directory '/home/azihell/desafio_ws/build/CMakeFiles/CMakeTmp'
-Makefile:126: recipe for target 'cmTC_c2c74/fast' failed
-make: *** [cmTC_c2c74/fast] Error 2
+Makefile:126: recipe for target 'cmTC_4a75b/fast' failed
+make: *** [cmTC_4a75b/fast] Error 2
 
 
