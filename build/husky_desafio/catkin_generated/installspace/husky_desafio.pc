@@ -1,8 +1,0 @@
-prefix=/home/azihell/desafio_ws/install
-
-Name: husky_desafio
-Description: Description of husky_desafio
-Version: 0.0.0
-Cflags: 
-Libs: -L${prefix}/lib 
-Requires: 

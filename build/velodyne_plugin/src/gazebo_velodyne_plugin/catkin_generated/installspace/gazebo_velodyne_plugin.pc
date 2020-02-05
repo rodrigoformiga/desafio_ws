@@ -1,8 +1,0 @@
-prefix=/home/azihell/desafio_ws/install
-
-Name: gazebo_velodyne_plugin
-Description: Description of gazebo_velodyne_plugin
-Version: 0.0.0
-Cflags: -I${prefix}/include
-Libs: -L${prefix}/lib 
-Requires: gazebo_plugins gazebo_ros roscpp

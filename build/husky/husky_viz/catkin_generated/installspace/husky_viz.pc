@@ -1,8 +1,0 @@
-prefix=/home/azihell/desafio_ws/install
-
-Name: husky_viz
-Description: Description of husky_viz
-Version: 0.4.2
-Cflags: 
-Libs: -L${prefix}/lib 
-Requires: 
