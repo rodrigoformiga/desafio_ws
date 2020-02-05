@@ -163,7 +163,8 @@ class Camera:
       print('INCREMENTO X: ' + str(x_move_base))
       print('INCREMENTO Y: ' + str(y_move_base))
     
-    if (distance <= 1.0):
+    if (distance <= 2.0):
+      rospy.Publisher('/move_base/cancel', GoalID, queue_size=1).publish(GoalID())
       self.pub_cancel_move.publish()
       vel_msg = Twist()
       vel_msg.linear.x = 0
