@@ -5,15 +5,6 @@
 # it emulates the modifications of the setup script without recurring computations
 
 # new environment variables
-export HUSKY_DESCRIPTION="/home/azihell/desafio_ws/src/husky_customization/husky_custom_description/urdf/custom_description.urdf.xacro"
-export HUSKY_GAZEBO_DESCRIPTION="/home/azihell/desafio_ws/src/husky_customization/husky_custom_gazebo/urdf/custom_description.gazebo.xacro"
-export HUSKY_MAG_CONFIG="/home/azihell/desafio_ws/src/husky/husky_bringup/config/mag_config_default.yaml"
 
 # modified environment variables
-export CMAKE_PREFIX_PATH="/home/azihell/desafio_ws/devel:$CMAKE_PREFIX_PATH"
-export LD_LIBRARY_PATH="/home/azihell/desafio_ws/devel/lib:$LD_LIBRARY_PATH"
-export PKG_CONFIG_PATH="/home/azihell/desafio_ws/devel/lib/pkgconfig:$PKG_CONFIG_PATH"
 export PWD="/home/azihell/desafio_ws/build"
-export PYTHONPATH="/home/azihell/desafio_ws/devel/lib/python2.7/dist-packages:$PYTHONPATH"
-export ROSLISP_PACKAGE_DIRECTORIES="/home/azihell/desafio_ws/devel/share/common-lisp"
-export ROS_PACKAGE_PATH="/home/azihell/desafio_ws/src:$ROS_PACKAGE_PATH"
