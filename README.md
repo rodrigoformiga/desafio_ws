@@ -23,6 +23,6 @@ Start second exploration:
 
 Include in "acml.launch":
 
-*amcl.launch 
-*move_base.launch 
+* amcl.launch 
+* move_base.launch 
 
